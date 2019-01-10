@@ -1,5 +1,8 @@
 import sqlite3
 
+from time import sleep
+from util import neat_display
+
 
 def check_safe(field, value): # TODO something sensible, safe, and sustainable
     pass 
@@ -12,9 +15,9 @@ def show(table_name):
     tables = [_[0] for _ in c.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall()] # TODO make less hacky           
 
     if table_name in tables:
-        for i in c.execute("select * from %s" % table_name):
-            print i
-        print
+        result_set = c.execute("select * from %s" % table_name)
+        neat_display(list(result_set))
+        sleep(3)                       # TODO make commands more extendable, use getopt o/s
 
 
 def insert(table_name):
