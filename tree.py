@@ -2,7 +2,7 @@ import os
 import time
 import sqlite3
 
-from commands import show, insert
+from commands import show, insert, associate
 from collections import defaultdict
 
 def display():
@@ -46,6 +46,8 @@ def main():
             show(table)
         elif cmd in 'quit':
             print 'bye!'
+        elif cmd in 'build':
+            associate()
         else:
             print "not implemented"
 
