@@ -1,9 +1,11 @@
 import os
 import time
+import setup
 import sqlite3
 
-from commands import show, insert, associate
+from commands import show, insert, associate, user_search
 from collections import defaultdict
+
 
 def display():
 
@@ -21,15 +23,15 @@ def display():
         print i
         
     print
-    
 
+    
 def main():
     '''Load, edit, and save a family tree'''
     
     # Don't step on an existing family tree!
     if not os.path.isfile('family.db'):
-        initialize()
-    
+        setup.setup()
+
     db = sqlite3.connect('family.db') # TODO: allow multiple save files
     c  = db.cursor()
 
@@ -48,6 +50,11 @@ def main():
             print 'bye!'
         elif cmd in 'build':
             associate()
+        elif cmd in 'search':
+            table = raw_input(" search where? ")
+            value = raw_input(" search what? ")
+            user_search(table, value)
+            raw_input(" \n any key to clear results")
         else:
             print "not implemented"
 

@@ -2,10 +2,11 @@ import sqlite3
 
 from time import sleep
 from util import neat_display
-
+from search import search
 
 def check_safe(field, value): # TODO something sensible, safe, and sustainable
     pass 
+
 
 def show(table_name, timed=True):
     db = sqlite3.connect('family.db')
@@ -35,7 +36,15 @@ def tree_display(individual_id):
         raise ModelError("People should be unique, and exist.")
     
     result_set = c.execute("select * from relationships where people_1_id = ? or people_2_id = ?", str(individual_id))
-    
+
+
+def user_search(table_name, value):
+    result_set = search(table_name, value)
+    if result_set is not None:
+        neat_display(result_set)
+    else:
+        print "\nNothing!"
+
 
 def insert(table_name):
     '''returns first value of inserted record'''
@@ -61,7 +70,7 @@ def insert(table_name):
         
         insertion = tuple(insertion)
         
-        insert_sql = "insert into %s values(" % table_name + "?"  # TODO make less hacky
+        insert_sql = "insert into %s values(" % table_name + "?"  # TODO make less hacky + injection-safe
         for i in range(len(fields) - 1): insert_sql += ",?"
         insert_sql += ")"
 
