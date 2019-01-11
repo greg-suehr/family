@@ -15,7 +15,7 @@ def initialize():
     c.execute("insert into r_types values ( 2, 'froroal')")
     c.execute("insert into r_types values ( 3, 'consanguineal')")
 
-    c.execute("create table roles (role_id INT, role)")
+    c.execute("create table roles (role_id INT, r_type_id INT, role)")
 
     c.execute("create table relationships \                                                                            
                   (r_id INT, people_1_id INT, people_2_id INT, r_type_id INT, role_1_id INT, role_2_id INT, \
