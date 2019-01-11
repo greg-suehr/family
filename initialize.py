@@ -18,7 +18,7 @@ def initialize():
     c.execute("create table roles (role_id INT, role)")
 
     c.execute("create table relationships \                                                                            
-                  (r_id INT, people_1_id INT, people_2_id INT, r_typle_id INT, role_1_id INT, role_2_id INT, \
+                  (r_id INT, people_1_id INT, people_2_id INT, r_type_id INT, role_1_id INT, role_2_id INT, \
                    place_id INT, start_year INT, end_year INT)")
 
     c.execute("create table note_types (note_type_id INT, note_type)")
