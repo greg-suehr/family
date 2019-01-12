@@ -1,7 +1,6 @@
 import os
 import time
 import setup
-import sqlite3
 
 from commands import show, insert, associate, user_search
 from collections import defaultdict
@@ -16,13 +15,9 @@ def display():
     #     select all relationships where people_1_id = root_noe and role_2
     # ....
     
-    db = sqlite3.connect('family.db')
-    c  = db.cursor()
-
-    for i in c.execute("select * from relationships"):
-        print i
-        
+    show('relationships', timed=False)
     print
+    
 
     
 def main():
@@ -31,9 +26,6 @@ def main():
     # Don't step on an existing family tree!
     if not os.path.isfile('family.db'):
         setup.setup()
-
-    db = sqlite3.connect('family.db') # TODO: allow multiple save files
-    c  = db.cursor()
 
     cmd = ''
     while cmd != 'quit':
@@ -58,7 +50,7 @@ def main():
         else:
             print "not implemented"
 
-        time.sleep(1)
+        time.sleep(2)
         os.system('clear') # clear the screen
         pass  # and execute the command
 

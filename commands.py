@@ -1,7 +1,9 @@
 import sqlite3
 
+from classes.Tables import Table
+
 from time import sleep
-from util import neat_display
+from util import neat_display, check_table
 from search import search
 
 def check_safe(field, value): # TODO something sensible, safe, and sustainable
@@ -9,14 +11,11 @@ def check_safe(field, value): # TODO something sensible, safe, and sustainable
 
 
 def show(table_name, timed=True):
-    db = sqlite3.connect('family.db')
-    c  = db.cursor()
 
-    # TODO build a global cache for ever-searches like this                                                                               
-    tables = [_[0] for _ in c.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall()] # TODO make less hacky           
+    if check_table(table_name):
+        table = Table(table_name)  # TODO: should this load a known search order? Should we use an extant object?
+        result_set = table.select_all()
 
-    if table_name in tables:
-        result_set = c.execute("select * from %s" % table_name).fetchall()
         if len(result_set) != 0:
             neat_display(list(result_set))
         if timed:
@@ -52,10 +51,7 @@ def insert(table_name):
     db = sqlite3.connect('family.db')
     c  = db.cursor()
     
-    # TODO build a global cache for ever-searches like this
-    tables = [_[0] for _ in c.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall()] # TODO make less hacky
-
-    if table_name in tables:   # does this if make this injection proof?
+    if check_table(table_name)
         fields = [_[0] for _ in c.execute('select * from %s' % table_name).description]
         inserter = {key:[] for key in fields}
         for f in fields:
