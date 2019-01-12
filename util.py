@@ -1,3 +1,14 @@
+import sqlite3
+
+db = sqlite3.connect("family.db")
+c  = db.cursor()
+
+def check_table(table_name):
+    # TODO build a global cache for ever-searches like this
+    tables = [_[0] for _ in c.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall()] # TODO make less hacky
+
+    return (table_name in tables)
+
 
 def neat_display(rows):
     '''
@@ -20,4 +31,3 @@ def neat_display(rows):
         for i in range(n_cols):
             print str(row[i]).ljust(w_cols[i]),  # TODO: figure out this magic,
         print
-        
