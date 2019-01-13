@@ -51,7 +51,7 @@ def insert(table_name):
     db = sqlite3.connect('family.db')
     c  = db.cursor()
     
-    if check_table(table_name)
+    if check_table(table_name):
         fields = [_[0] for _ in c.execute('select * from %s' % table_name).description]
         inserter = {key:[] for key in fields}
         for f in fields:
