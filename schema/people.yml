@@ -1,0 +1,12 @@
+people:
+  columns:
+    - people_id INTEGER PRIMARY KEY
+    - first_name TEXT NOT NULL
+    - last_name TEXT NOT NULL
+    - more_name TEXT NOT NULL
+  indexes:
+    - primary: people_id
+    - unique:
+        - first_name
+	- last_name
+	- more_name

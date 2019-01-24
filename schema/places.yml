@@ -1,0 +1,8 @@
+places:
+  columns:
+    - place_id INTEGER PRIMARY KEY
+    - place_name TEXT NOT NULL
+    - gis BLOB
+  indexes:
+    - primary: place_id
+    - unique: place_name

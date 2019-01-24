@@ -1,0 +1,7 @@
+note_types:
+  columns:
+    - note_type_id INTEGER PRIMARY KEY
+    - note_type TEXT NOT NULL
+  indexes:
+    - primary: note_type_id
+    - unique: note_type

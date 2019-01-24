@@ -1,0 +1,8 @@
+r_types:
+  columns:
+    - r_type_id INTEGER PRIMARY KEY
+    - r_type TEXT NOT NULL
+    - symmetric BOOLEAN NOT NULL
+  indexes:
+    - primary: r_type_id
+    - unique: r_type

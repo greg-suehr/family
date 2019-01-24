@@ -1,0 +1,12 @@
+relationship_places:
+  columns:
+    - r_place_id INTEGER PRIMARY KEY
+    - r_id INTEGER NOT NULL
+    - place_id INTEGER NOT NULL
+  keys:
+    - primary: r_place_id
+    - unique:
+        - r_id
+	- place_id
+    - foreign: r_id
+    - foreign: place_id

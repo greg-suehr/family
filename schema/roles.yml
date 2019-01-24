@@ -1,0 +1,9 @@
+roles:
+  columns:
+    - role_id INTEGER PRIMARY KEY
+    - r_type_id INTEGER
+    - role TEXT NOT NULL
+  keys:
+    - primary: role_id
+    - unique: role
+    - foreign: r_type_id

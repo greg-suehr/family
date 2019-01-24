@@ -1,0 +1,16 @@
+relationships:
+  columns:
+    - r_id INTEGER PRIMARY KEY
+    - people_1_id INTEGER NOT NULL
+    - people_2_id INTEGER NOT NULL
+    - r_type_id INTEGER NOT NULL
+    - role_1_id INTEGER NOT NULL
+    - role_2_id INTEGER NOT NULL
+    - start_year INTEGER NOT NULL
+    - end_year INTEGER
+  indexes:
+    - primary: r_id
+    - unique:
+        - people_1_id
+	- people_2_id
+	- r_type_id
