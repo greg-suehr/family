@@ -1,0 +1,9 @@
+# Testing
+
+There are no working tests for Clapp.
+
+Writing a series of unit tests for Clapp functionality is an early priority.
+An extant testing framework is preferrable, but only so long as it is minimally contraining.
+It could provide some handrails for early development decisions, but shouldn't guide design.
+
+After the frameworks and unit tests, a sufficient strategy may be writing reactionary tests.

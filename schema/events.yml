@@ -1,0 +1,7 @@
+events:
+  columns:
+    - event_id INTEGER PRIMARY KEY
+    - start_time INTEGER NOT NULL
+    - end_time INTEGER
+  indexes:
+    - primary: event_id

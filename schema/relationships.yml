@@ -6,8 +6,6 @@ relationships:
     - r_type_id INTEGER NOT NULL
     - role_1_id INTEGER NOT NULL
     - role_2_id INTEGER NOT NULL
-    - start_year INTEGER NOT NULL
-    - end_year INTEGER
   indexes:
     - primary: r_id
     - unique:
